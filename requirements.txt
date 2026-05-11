@@ -1,0 +1,21 @@
+# Core ML
+torch>=2.0
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3
+
+# Hyperbolic geometry
+geoopt>=0.5
+
+# Single-cell data (optional but strongly recommended)
+anndata>=0.10
+scanpy>=1.9
+
+# Config & I/O
+pyyaml>=6.0
+
+# Visualisation (optional)
+matplotlib>=3.7
+
+# Testing
+pytest>=7.0

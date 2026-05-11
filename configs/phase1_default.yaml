@@ -1,0 +1,66 @@
+# Phase 1 default configuration
+# Edit this file and pass it to scripts/train_phase1.py with --config.
+# All fields are optional; missing keys revert to dataclass defaults.
+
+# ---------------------------------------------------------------------------
+# Data
+# ---------------------------------------------------------------------------
+data_path: ""            # path to .h5ad or .npz; empty = use synthetic data
+use_rep: "X_pca"         # adata.obsm key, or "X" for raw expression
+spatial_key: "spatial"   # obsm key for 2-D coords; null = transcript-only mode
+crypt_label_key: null    # obs column for crypt-axis labels
+label_type: "continuous" # "continuous" or "ordinal"
+metadata_keys: []        # obs columns to carry as metadata
+
+# ---------------------------------------------------------------------------
+# Preprocessing (applied only when loading raw counts)
+# ---------------------------------------------------------------------------
+n_hvg: 2000
+n_pca_components: 50
+normalize_labels: true
+
+# ---------------------------------------------------------------------------
+# Model
+# ---------------------------------------------------------------------------
+hidden_dims: [256, 128]
+latent_dim: 32
+curvature: 1.0
+learn_curvature: false
+dropout: 0.1
+max_norm: 0.95
+
+# ---------------------------------------------------------------------------
+# Loss weights & hyper-parameters
+# ---------------------------------------------------------------------------
+lambda_transcript: 1.0
+lambda_spatial: 0.5
+lambda_crypt: 1.0
+
+k_pos: 5          # positives per anchor (transcript triplet)
+k_spatial: 6      # spatial neighbours per anchor
+triplet_margin: 0.5
+rank_margin: 0.1
+n_neg: 8          # negatives per anchor
+
+# ---------------------------------------------------------------------------
+# Training
+# ---------------------------------------------------------------------------
+batch_size: 256
+n_epochs: 100
+lr: 0.001
+weight_decay: 0.0001
+grad_clip: 1.0
+
+# ---------------------------------------------------------------------------
+# Evaluation & logging
+# ---------------------------------------------------------------------------
+eval_every: 10
+save_every: 50
+
+# ---------------------------------------------------------------------------
+# Reproducibility & output
+# ---------------------------------------------------------------------------
+seed: 42
+device: "auto"    # auto → CUDA > MPS > CPU
+output_dir: "./outputs"
+run_name: "phase1"

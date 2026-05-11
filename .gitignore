@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Virtual environment
+.venv/
+venv/
+
+# Data — never commit datasets (includes Broad Institute SCP2595 data and all raw/processed h5ad files)
+data/
+
+# OS files
+.DS_Store
+
+
+# Internal research planning documents — not for public release
+phase1.md
+phase2.md
+phase2B.md
+implementation_plan.md
+old_proposal.md
+OUTLINE.md
+example_iOT_paper_citation.tex
+
+# All experiment outputs (logs, embeddings, intermediate checkpoints, plots)
+outputs/
+
+# Model checkpoints — all ignored by default; only the named best models in models/ are tracked
+**/*.pt
+!/models/*.pt
+
+# Numpy embedding arrays
+**/*.npy
+
+# Log files
+*.log
+.claude/
